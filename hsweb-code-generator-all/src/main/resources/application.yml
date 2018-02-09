@@ -1,0 +1,29 @@
+server:
+  port: 5100
+spring:
+    aop:
+        auto: true
+        proxy-target-class: true
+    datasource:
+      url: jdbc:h2:file:./data/h2db
+      username: sa
+      password:
+      type: com.alibaba.druid.pool.DruidDataSource
+      filters: stat
+      maxActive: 1000
+      initialSize: 5
+      minIdle: 5
+      maxWait: 5000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: select 1 from dual
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxOpenPreparedStatements: 200
+    http:
+      multipart:
+        enabled: true
+        max-file-size: 100MB
+        max-request-size: 120MB
