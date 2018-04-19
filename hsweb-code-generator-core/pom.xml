@@ -28,5 +28,11 @@
             <version>4.3.9.RELEASE</version>
             <optional>true</optional>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.github.javaparser/javaparser-core -->
+        <dependency>
+            <groupId>com.github.javaparser</groupId>
+            <artifactId>javaparser-core</artifactId>
+            <version>3.6.1</version>
+        </dependency>
     </dependencies>
 </project>

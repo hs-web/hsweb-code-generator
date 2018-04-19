@@ -29,7 +29,7 @@ public class DefaultCodeWriter implements CodeWriter {
                 String fileName = path + "/" + code.getFile();
                 String replaceMod = code.getRepeat();
                 File codeFile = new File(fileName);
-                if (codeFile.exists() && replaceMod != null) {
+                if (codeFile.exists() && replaceMod != null && !fileName.endsWith(".java")) {
                     switch (replaceMod) {
                         case "ignore":
                             return;
@@ -41,7 +41,11 @@ public class DefaultCodeWriter implements CodeWriter {
                             break;
                     }
                 }
-                FileUtils.writeString2File(template, fileName, "utf-8");
+                if (fileName.endsWith(".java")) {
+                    ClassWriter.writeClass(fileName, template);
+                } else {
+                    FileUtils.writeString2File(template, fileName, "utf-8");
+                }
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
